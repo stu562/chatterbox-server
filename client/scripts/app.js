@@ -28,7 +28,7 @@ var App = {
       //ignores messages that have been seen
       for (var i = results.length - 1; i >= 0; i--) {
         var msgObj = results[i];
-        if (msgObj.username && msgObj.text) {
+        if (msgObj.text && msgObj.username) {
           if (!Messages.objectIdSeen.includes(msgObj.objectId)) {
             Messages.objectIdSeen.push(msgObj.objectId);
             MessagesView.renderMessage(msgObj);

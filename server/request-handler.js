@@ -23,17 +23,15 @@ var sendResponse = function(response, data, statusCode) {
 
 var requestHandler = function (request, response) {
   console.log('Serving request type ' + request.method + ' for url ' + request.url);
-
-  var statusCode = statusCode || 200;
   // var urlObj = url.parse(request.url);
 
   if (request.method === 'GET') {
-    if (request.url === '/classes/messages/') {
+    // if (request.url === '/classes/messages/') {
     sendResponse(response, {results: messages});
-    } else {
-      response.writeHead(404);
-      response.end();
-    }
+    // } else {
+    //   response.writeHead(404);
+    //   response.end();
+    // }
     //code the server reads 
   } else if (request.method === 'POST') {
     var string = '';
@@ -41,16 +39,16 @@ var requestHandler = function (request, response) {
       string += chunk;
     })
     request.on('end', () => {
-      object.results.push(JSON.parse(string))
+      messages.push(JSON.parse(string))
     })
     // response.writeHead(201, headers);//write head changes the method of the object 
     // response.end(); //end transmission
-    sendResponse(response, 'Hello world');
+    sendResponse(response, {objectId: 1});
   } else if (request.method === 'OPTIONS') {
     sendResponse(response, null);
   }
 
-  response.end(JSON.stringify({results: messages}));
+  // response.end(JSON.stringify({results: messages}));
   // we are sending back 
 };
 
