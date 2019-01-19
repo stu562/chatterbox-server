@@ -31,7 +31,9 @@
     ]
   },
   "dependencies": {
+    "dompurify": "^1.0.9",
     "fs": "0.0.1-security",
+    "jquery": "^3.3.1",
     "underscore": "^1.9.1"
   }
 }
